@@ -1,0 +1,12 @@
+# secrets — never commit API keys
+.env
+*.env
+!.env.example
+
+# python
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# extraction caches (regenerable)
+code/cache/

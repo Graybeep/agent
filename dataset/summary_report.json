@@ -1,0 +1,30 @@
+{
+  "generated_at": "2026-08-02T12:33:00+05:30",
+  "dry_run": false,
+  "messages_processed": 110,
+  "sources": {
+    "rule": 40,
+    "llm": 70,
+    "fallback": 0
+  },
+  "actions": {
+    "notify": 32,
+    "mute": 62,
+    "digest": 16
+  },
+  "message_types": {
+    "payment": 1,
+    "scam": 31,
+    "personal": 11,
+    "forward": 10,
+    "event": 15,
+    "promotion": 16,
+    "greeting": 4,
+    "business_update": 7,
+    "urgent": 13,
+    "unknown": 2
+  },
+  "elapsed_seconds": 417.5,
+  "avg_seconds_per_message": 3.8,
+  "output_file": "D:\\EXPERIMENTS\\agent\\data\\dataset\\output.csv"
+}

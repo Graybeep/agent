@@ -1,0 +1,6 @@
+pandas>=2.2
+google-genai>=1.0
+python-dotenv>=1.0
+scikit-learn>=1.4
+rich>=13.7
+pytest>=8.0

@@ -1,111 +1,111 @@
 message_id,action,message_type,reason,confidence,evidence_message_ids
-msg_023,,,,,
-msg_091,,,,,
-msg_090,,,,,
-msg_048,,,,,
-msg_040,,,,,
-msg_075,,,,,
-msg_005,,,,,
-msg_104,,,,,
-msg_069,,,,,
-msg_107,,,,,
-msg_070,,,,,
-msg_003,,,,,
-msg_099,,,,,
-msg_008,,,,,
-msg_092,,,,,
-msg_060,,,,,
-msg_004,,,,,
-msg_030,,,,,
-msg_045,,,,,
-msg_052,,,,,
-msg_009,,,,,
-msg_071,,,,,
-msg_016,,,,,
-msg_065,,,,,
-msg_038,,,,,
-msg_086,,,,,
-msg_014,,,,,
-msg_094,,,,,
-msg_029,,,,,
-msg_105,,,,,
-msg_002,,,,,
-msg_010,,,,,
-msg_078,,,,,
-msg_013,,,,,
-msg_018,,,,,
-msg_044,,,,,
-msg_032,,,,,
-msg_106,,,,,
-msg_006,,,,,
-msg_109,,,,,
-msg_108,,,,,
-msg_019,,,,,
-msg_088,,,,,
-msg_056,,,,,
-msg_027,,,,,
-msg_050,,,,,
-msg_083,,,,,
-msg_063,,,,,
-msg_033,,,,,
-msg_061,,,,,
-msg_020,,,,,
-msg_017,,,,,
-msg_058,,,,,
-msg_026,,,,,
-msg_047,,,,,
-msg_046,,,,,
-msg_042,,,,,
-msg_079,,,,,
-msg_098,,,,,
-msg_037,,,,,
-msg_007,,,,,
-msg_085,,,,,
-msg_001,,,,,
-msg_021,,,,,
-msg_028,,,,,
-msg_012,,,,,
-msg_064,,,,,
-msg_103,,,,,
-msg_031,,,,,
-msg_057,,,,,
-msg_087,,,,,
-msg_067,,,,,
-msg_039,,,,,
-msg_082,,,,,
-msg_066,,,,,
-msg_049,,,,,
-msg_015,,,,,
-msg_051,,,,,
-msg_097,,,,,
-msg_089,,,,,
-msg_053,,,,,
-msg_059,,,,,
-msg_024,,,,,
-msg_072,,,,,
-msg_036,,,,,
-msg_076,,,,,
-msg_055,,,,,
-msg_102,,,,,
-msg_080,,,,,
-msg_093,,,,,
-msg_034,,,,,
-msg_035,,,,,
-msg_101,,,,,
-msg_041,,,,,
-msg_011,,,,,
-msg_110,,,,,
-msg_095,,,,,
-msg_074,,,,,
-msg_073,,,,,
-msg_054,,,,,
-msg_068,,,,,
-msg_100,,,,,
-msg_062,,,,,
-msg_096,,,,,
-msg_043,,,,,
-msg_077,,,,,
-msg_081,,,,,
-msg_025,,,,,
-msg_084,,,,,
-msg_022,,,,,
+msg_023,notify,payment,The verified bank sent a payment update that the user previously opened and engaged with.,0.9,message_0243
+msg_091,mute,scam,"Message asks the user to share a security code, a known account-takeover pattern.",0.95,message_0238;message_0381
+msg_090,digest,personal,"The sender is an unfamiliar contact who explicitly stated the matter is not urgent, making it suitable for a summary.",0.9,none
+msg_048,mute,scam,"The message uses high-pressure tactics and a QR code for payment, mirroring previous scam attempts reported by the user in this group.",0.9,message_0151;message_0152;message_0237
+msg_040,mute,forward,"The message was forwarded 7 times, indicating mass-forwarded chain content rather than a personal message.",0.91,message_0136;message_0135
+msg_075,notify,event,"The user has a history of engaging with ride updates from this verified business, and this is a time-sensitive status change for an active booking.",0.9,message_0205;message_0206
+msg_005,notify,personal,"The message is a direct, time-sensitive request from a seller regarding an item the user has previously engaged with in this marketplace group.",0.9,message_0065;message_0066
+msg_104,mute,promotion,"The user has consistently dismissed and muted similar messages regarding personal sales and pickups, indicating a lack of interest in this type of content.",0.9,message_0224;message_0050;message_0383
+msg_069,mute,greeting,"The message was forwarded 11 times, indicating mass-forwarded chain content rather than a personal message.",0.91,message_0177;message_0193;message_0042
+msg_107,mute,scam,"The message attempts to harvest credentials via a fake security alert, which is a common phishing tactic the user has previously received.",0.9,message_0235;message_0213
+msg_070,mute,scam,"The message uses fear tactics and requests sensitive credentials like an OTP, which matches the pattern of previous scam attempts the user has received.",0.9,message_0369;message_0213;message_0195
+msg_003,notify,business_update,"The message is a transactional update from a verified business regarding an expected delivery, which the user has historically engaged with.",0.9,message_0400;message_0031;message_0061
+msg_099,digest,personal,"The sender explicitly states the message is not blocking and can be reviewed later, fitting the user's history of handling non-urgent work updates.",0.9,message_0227
+msg_008,digest,business_update,The message is a non-urgent feedback request from a known business that arrived during the user's quiet hours.,0.9,message_0296;message_0072;message_0071
+msg_092,digest,business_update,This is a routine transactional update from a verified business that does not require immediate action.,0.9,none
+msg_060,notify,event,The user actively engages with time-sensitive internship deadline reminders from this specific faculty group.,0.9,message_0284;message_0176;message_0375
+msg_004,notify,business_update,"The user has a history of engaging with these specific health-related updates from this verified business, which is relevant to their upcoming appointment.",0.9,message_0005;message_0245;message_0246
+msg_030,mute,promotion,The user muted this group and the message does not mention them directly.,0.9,message_0115;message_0335;message_0050
+msg_045,notify,urgent,"The delivery person is at the gate and requires immediate confirmation to complete the delivery, which is a time-sensitive request the user has historically engaged with.",0.9,message_0061
+msg_052,mute,scam,Business sender shows scam signals: sender domain 'talabat-refund.com' does not match official domain 'talabat.com'; account is unverified; high user report rate; sender domain is very new.,0.94,message_0207;message_0208;message_0159
+msg_009,mute,unknown,The user muted this group and the message does not mention them directly.,0.9,none
+msg_071,digest,personal,The message is a casual update about a future plan that is not time-sensitive and explicitly states that confirmation will follow later.,0.9,message_0197
+msg_016,mute,scam,"The message uses high-pressure tactics and an unofficial domain to solicit credentials, matching patterns of previously reported scam attempts.",0.9,message_0024;message_0184;message_0202
+msg_065,mute,scam,"The message content is a promotional banner for a different brand (Amazon) and a third-party service (Shopcash), which contradicts the sender's identity as Target and indicates a deceptive or compromised communication.",0.9,none
+msg_038,mute,forward,"The message was forwarded 10 times, indicating mass-forwarded chain content rather than a personal message.",0.91,message_0132;message_0131
+msg_086,notify,event,"The message contains a time-sensitive schedule change for a travel booking, which the user has historically engaged with and acted upon.",0.9,message_0222
+msg_014,mute,promotion,"The user opted out of promotions from this business, so marketing messages are muted.",0.92,message_0258;message_0018;message_0017
+msg_094,mute,promotion,"The user has a history of dismissing and muting promotional messages from this business, and the message is a marketing offer.",0.9,message_0356
+msg_029,mute,promotion,"The message was forwarded 8 times, indicating mass-forwarded chain content rather than a personal message.",0.91,message_0095
+msg_105,mute,forward,"The message was forwarded 7 times, indicating mass-forwarded chain content rather than a personal message.",0.91,message_0373;message_0233
+msg_002,notify,urgent,"The user is directly mentioned by a coworker for a time-sensitive request regarding a client meeting, which matches the user's history of responding to urgent work-related requests.",0.9,message_0003;message_0266;message_0041
+msg_010,digest,business_update,"The message is a routine feedback request from a known business that the user has historically opened but not replied to, making it suitable for a digest.",0.9,message_0011;message_0242;message_0075
+msg_078,mute,forward,"The message was forwarded 10 times, indicating mass-forwarded chain content rather than a personal message.",0.91,message_0211;message_0212;message_0220
+msg_013,mute,promotion,"The message is an unsolicited commercial offer sent to a professional group, which is inappropriate and resembles spam/promotion.",0.9,none
+msg_018,mute,forward,"The message was forwarded 9 times, indicating mass-forwarded chain content rather than a personal message.",0.91,message_0026;message_0092;message_0091
+msg_044,mute,scam,"The message uses high-pressure tactics and requests OTP verification via a link, which is a classic phishing pattern matching the user's history of reporting similar scams.",0.9,message_0143;message_0144
+msg_032,digest,personal,"The user is an active member of this student group and frequently engages with similar requests for academic materials, but the sender explicitly stated there is no rush.",0.85,message_0119;message_0285
+msg_106,notify,event,The message provides a time-sensitive location change for an activity the user has consistently engaged with in the past.,0.9,message_0234;message_0376
+msg_006,notify,event,The user is an admin of this society group and consistently engages with maintenance-related notices.,0.9,message_0029;message_0044;message_0097
+msg_109,mute,scam,"The message uses high-pressure tactics and requests a QR scan for payment, mirroring previous scam attempts reported by the user in this group.",0.9,message_0151;message_0152;message_0237
+msg_108,mute,scam,Business sender shows scam signals: sender domain 'chase-secure-alert.com' does not match official domain 'chase.com'; account is unverified; sender domain is very new.,0.94,message_0094;message_0093;message_0236
+msg_019,mute,scam,Business sender shows scam signals: sender domain 'chase-secure-alert.com' does not match official domain 'chase.com'; account is unverified; sender domain is very new.,0.94,message_0277;message_0094
+msg_088,mute,promotion,The user muted this group and the message does not mention them directly.,0.9,message_0224;message_0050;message_0116
+msg_056,notify,urgent,The user is directly mentioned in a time-sensitive request that requires an immediate confirmation to proceed with the appointment.,0.9,message_0359;message_0168
+msg_027,mute,scam,"The message impersonates a known travel brand (Thrillophilia) while promoting a different entity (Happy Holidayers) with a suspicious domain, indicating a deceptive marketing tactic.",0.9,none
+msg_050,mute,scam,Business sender shows scam signals: sender domain 'greencrosspharmacy.in' does not match official domain nan; account is unverified.,0.94,none
+msg_083,digest,personal,"The sender explicitly states the request is not urgent and can wait until tomorrow, aligning with the user's history of handling non-urgent work requests.",0.9,message_0219
+msg_063,mute,scam,"The message uses pressure tactics and requests a payment via an unofficial method, which is a common pattern for scams.",0.9,message_0181
+msg_033,digest,personal,The sender explicitly states the message is not urgent and the user is in a family group where they have a history of reading messages.,0.9,message_0121
+msg_061,mute,greeting,"The message was forwarded 8 times, indicating mass-forwarded chain content rather than a personal message.",0.91,message_0177;message_0193;message_0042
+msg_020,mute,scam,"The message uses high-pressure language and a suspicious shortened link to solicit an account check, which is a common phishing tactic.",0.9,none
+msg_017,mute,promotion,The user muted this group and the message does not mention them directly.,0.9,message_0090;message_0089
+msg_058,mute,forward,"The message was forwarded 10 times, indicating mass-forwarded chain content rather than a personal message.",0.91,message_0040;message_0241;message_0039
+msg_026,mute,scam,Business sender shows scam signals: sender domain 'amazonpay-delivery.in' does not match official domain 'amazon.in'; account is unverified; high user report rate; sender domain is very new.,0.94,message_0032;message_0107;message_0108
+msg_047,notify,event,"The message provides a relevant, time-sensitive update regarding building infrastructure in a group the user actively monitors.",0.9,message_0150;message_0149
+msg_046,mute,scam,"Message asks the user to share a security code, a known account-takeover pattern.",0.95,message_0148;message_0147;message_0024
+msg_042,notify,urgent,"The message is a time-sensitive alert regarding vehicle towing in the user's society, which the user has historically engaged with and acted upon.",0.9,message_0140;message_0058
+msg_079,mute,scam,"The message uses high-pressure tactics to solicit an OTP, which is a clear credential harvesting scam attempt.",0.9,message_0369;message_0045;message_0023
+msg_098,notify,urgent,"The sender is a known contact requesting an immediate decision on a time-sensitive appointment, which aligns with the user's history of engaging with similar urgent clinic-related requests.",0.9,message_0168;message_0359;message_0226
+msg_037,notify,event,The user is an active admin in this society group and frequently engages with time-sensitive logistics updates regarding water supply.,0.9,message_0001;message_0129;message_0215
+msg_007,digest,event,The message is a non-urgent community event update and the sender explicitly states that no response is needed in the thread.,0.9,none
+msg_085,mute,scam,Business sender shows scam signals: sender domain 'hdfcbank-kyc.in' does not match official domain 'hdfc.bank.in'; account is unverified; high user report rate; sender domain is very new.,0.94,none
+msg_001,notify,event,"The message provides a time-sensitive update regarding water supply for the user's building, which the user has historically engaged with.",0.9,message_0057;message_0240;message_0139
+msg_021,notify,event,The user is an admin of this society group and consistently engages with similar administrative and payment-related notices.,0.9,message_0029;message_0044;message_0098
+msg_028,mute,promotion,"The user opted out of promotions from this business, so marketing messages are muted.",0.92,message_0034;message_0112;message_0111
+msg_012,mute,forward,"The message was forwarded 9 times, indicating mass-forwarded chain content rather than a personal message.",0.91,message_0079;message_0247;message_0194
+msg_064,mute,scam,"The message uses high-pressure tactics and requests sensitive financial verification, which is a classic scam pattern, while the attached media is unrelated promotional content.",0.9,message_0201;message_0087;message_0183
+msg_103,notify,personal,The sender is a known contact requesting a time-sensitive response for a transaction the user has previously engaged with.,0.9,message_0065;message_0382
+msg_031,notify,urgent,"The message is a direct, time-sensitive request from a coworker group regarding an incident review that requires immediate preparation to avoid work delays.",0.9,message_0249;message_0118
+msg_057,notify,urgent,"The user is directly mentioned by a coworker regarding a failing build that blocks a client update, matching the user's history of responding to urgent work-related requests.",0.9,message_0059;message_0169;message_0003
+msg_087,mute,unknown,The user muted this group and the message does not mention them directly.,0.9,message_0223;message_0203;message_0358
+msg_067,notify,event,The user is an admin in this society group and has a history of actively engaging with maintenance payment notices.,0.9,message_0098;message_0068;message_0044
+msg_039,notify,urgent,The user is directly mentioned in a time-sensitive request from a school group where they have a history of responding to similar administrative deadlines.,0.9,message_0364;message_0037
+msg_082,notify,urgent,"The message reports a critical production incident requiring immediate attention, matching the user's history of responding to urgent work-related alerts.",0.9,message_0218;message_0380
+msg_066,mute,promotion,"The user opted out of promotions from this business, so marketing messages are muted.",0.92,message_0402;message_0257;message_0052
+msg_049,mute,scam,"The message content claims to be from Shopee but the media transcript shows a JioMart logo, indicating a deceptive attempt to impersonate a brand.",0.9,none
+msg_015,mute,scam,"Message asks the user to share a security code, a known account-takeover pattern.",0.95,none
+msg_051,mute,promotion,"The user opted out of promotions from this business, so marketing messages are muted.",0.92,message_0257;message_0402;message_0104
+msg_097,digest,personal,"The sender explicitly states there is nothing urgent and requests to talk tomorrow, which aligns with the user's history of receiving and reading similar non-urgent messages.",0.9,message_0054;message_0225;message_0167
+msg_089,notify,personal,"The message is a direct, time-sensitive notification from a known entity regarding a personal item that requires action before a specific deadline.",0.9,none
+msg_053,mute,promotion,"The message was forwarded 6 times, indicating mass-forwarded chain content rather than a personal message.",0.91,none
+msg_059,mute,scam,"The message uses high-pressure tactics and requests sensitive account information, which is a clear indicator of a phishing scam.",0.9,message_0213
+msg_024,mute,promotion,"The user opted out of promotions from this business, so marketing messages are muted.",0.92,message_0257;message_0402;message_0104
+msg_072,mute,scam,"The message uses high-pressure tactics and a suspicious link to solicit sensitive credentials, mirroring previous scam attempts the user has received.",0.9,message_0023;message_0045;message_0085
+msg_036,mute,scam,Business sender shows scam signals: sender domain 'razorpayx-payouts.com' does not match official domain 'razorpayx.com'; account is unverified; sender domain is very new.,0.94,message_0283;message_0127;message_0128
+msg_076,mute,scam,Business sender shows scam signals: sender domain 'talabat-refund.com' does not match official domain 'talabat.com'; account is unverified; high user report rate; sender domain is very new.,0.94,message_0207;message_0208;message_0159
+msg_055,notify,urgent,"The sender is requesting an immediate decision within a ten-minute window, which aligns with the user's history of responding to time-sensitive requests.",0.9,message_0166;message_0387
+msg_102,notify,urgent,The message is a direct work-related request from a known context where the user has a history of immediate engagement and action.,0.9,message_0230;message_0371;message_0059
+msg_080,notify,event,The message is a time-sensitive logistics update from a society group the user actively manages and responds to.,0.9,message_0216;message_0130;message_0180
+msg_093,digest,business_update,"The message arrived during quiet hours and is not an emergency, so it is better suited for a digest despite being a legitimate business update.",0.9,message_0398;message_0349
+msg_034,mute,greeting,"The message was forwarded 11 times, indicating mass-forwarded chain content rather than a personal message.",0.91,message_0013;message_0014;message_0241
+msg_035,digest,promotion,"This is a marketing message from a known business that the user has previously opened, but it does not require immediate attention.",0.9,message_0281;message_0125
+msg_101,digest,personal,The message is a non-urgent personal check-in that arrived during quiet hours and explicitly states no reply is needed.,0.9,message_0229;message_0370;message_0268
+msg_041,mute,scam,"The sender is impersonating a known business but uses an unofficial domain and requests a link interaction, which is a common phishing tactic.",0.9,none
+msg_011,mute,greeting,"The message was forwarded 8 times, indicating mass-forwarded chain content rather than a personal message.",0.91,message_0014;message_0013;message_0171
+msg_110,mute,scam,"Message asks the user to share a security code, a known account-takeover pattern.",0.95,message_0238;message_0381
+msg_095,mute,scam,"The message uses a deceptive link and requests sensitive credentials like a PIN, matching the pattern of previously reported scam attempts.",0.9,message_0201;message_0183;message_0087
+msg_074,mute,promotion,"The message was forwarded 7 times, indicating mass-forwarded chain content rather than a personal message.",0.91,message_0358;message_0203;message_0204
+msg_073,mute,forward,"The message was forwarded 9 times, indicating mass-forwarded chain content rather than a personal message.",0.91,message_0087;message_0201;message_0183
+msg_054,mute,scam,"The message uses classic pressure tactics and requests an advance fee for a loan, which matches the pattern of previous scams the user has reported.",0.9,message_0164;message_0163;message_0389
+msg_068,digest,event,The sender explicitly states there is no urgency and the user is a regular participant in this group's planning discussions.,0.9,message_0191
+msg_100,notify,urgent,"The message indicates a time-sensitive technical escalation requiring immediate attention, matching the user's history of responding to similar urgent work-related alerts.",0.9,message_0362;message_0228
+msg_062,mute,forward,"The message was forwarded 7 times, indicating mass-forwarded chain content rather than a personal message.",0.91,none
+msg_096,notify,urgent,"The message concerns the recovery of a critical personal document (passport) with a same-day deadline, requiring immediate attention.",0.9,none
+msg_043,mute,forward,"The message was forwarded 11 times, indicating mass-forwarded chain content rather than a personal message.",0.91,none
+msg_077,digest,event,"The message contains school logistics that are important but arrive during the user's quiet hours, and the user has a history of engaging with similar school circulars.",0.9,message_0051;message_0037;message_0403
+msg_081,notify,event,"The message provides a time-sensitive same-day schedule change for school transport, which the user has historically engaged with and acted upon.",0.9,message_0217
+msg_025,notify,business_update,"This is a transactional update from a verified business regarding an active order, which the user has historically engaged with.",0.9,message_0004;message_0239;message_0105
+msg_084,mute,promotion,"The user opted out of promotions from this business, so marketing messages are muted.",0.92,message_0220;message_0356;message_0203
+msg_022,mute,scam,"The message uses pressure tactics and requests payment via an unofficial link and screenshot, mirroring previous scam attempts reported by the user.",0.9,message_0099;message_0151;message_0100
