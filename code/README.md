@@ -147,3 +147,16 @@ muted marketplace groups now classify as `promotion` instead of `unknown`
 A candidate scam-versus-spam refinement was evaluated the same way and
 rejected: dry-running it against the eight production rows it would touch
 flipped one correct `scam` row, failing our no-regression criterion.
+
+**Regeneration variance:** the confidence rescale required re-running the 70
+LLM-decided rows (the 40 rule-decided rows are deterministic and were left
+untouched). Diffing the result against the pre-rescale snapshot, 3 of 110
+rows (2.7%) changed `message_type` and 1 of those also changed `action`.
+`msg_023` (`payment` to `business_update`, a bank card-payment notice) and
+`msg_045` (`urgent` to `event`, a delivery agent waiting at the gate) are
+adjacent-category moves with no routing impact -- both kept their original
+action. `msg_065` moved from `mute`/`scam` to `digest`/`promotion` and
+stands: the sender is a verified business on its official domain, the user
+has opted into its promotions and consistently opens them, and those three
+structured signals outweigh the third-party ad creative in the attached
+image that the earlier run had read as a brand mismatch.
