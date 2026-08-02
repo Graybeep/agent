@@ -36,7 +36,14 @@ Evaluate against the solved examples, and run the unit tests:
 ```bash
 python evaluation/main.py    # accuracy vs dataset/sample_messages.csv
 python -m pytest tests/      # 36 unit tests (rules, validator, retrieval)
+python preflight.py          # pre-package checks; run before any code.zip rebuild
 ```
+
+`preflight.py` validates output.csv against the submission contract (row
+count, exact column order, message ordering, enum values, confidence range)
+and checks README.md for the non-ASCII characters an encoding round-trip
+leaves behind. It exits non-zero on failure so a broken artifact cannot be
+packaged.
 
 ## Architecture
 
