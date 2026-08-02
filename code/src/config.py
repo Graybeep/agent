@@ -60,9 +60,19 @@ ALLOWED_MESSAGE_TYPES = {
 
 # LLMs are habitually overconfident (0.98-1.0 on guesses); ground-truth sample
 # labels top out at 0.91. Confidence encodes the decision source: deterministic
-# rule hits occupy the 0.90-0.95 band, ambiguous LLM judgments are capped BELOW
-# it at 0.90, so a rule decision always scores at least as certain as any LLM one.
+# rule hits occupy the 0.90-0.95 band, ambiguous LLM judgments sit BELOW it, so
+# a rule decision always scores at least as certain as any LLM one.
+#
+# Hard-clamping every LLM score to the cap destroyed the model's own ranking
+# (69 of 70 rows landed on exactly 0.90). Instead the raw self-reported score
+# is linearly rescaled from its practical range into the LLM band, preserving
+# relative ordering while staying under the rule tier. LLM_CONFIDENCE_CAP
+# remains as a backstop so a rescaling bug can never cross into rule territory.
 LLM_CONFIDENCE_CAP = 0.90
+LLM_RAW_MIN = 0.70  # raw scores at/below this map to the bottom of the band
+LLM_RAW_MAX = 1.00
+LLM_BAND_MIN = 0.75
+LLM_BAND_MAX = 0.90
 
 RULE_CONFIDENCE = {
     "otp_solicitation": 0.95,

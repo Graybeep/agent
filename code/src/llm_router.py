@@ -8,6 +8,7 @@ message_type constrained to the allowed enum values).
 from __future__ import annotations
 
 import json
+import math
 import time
 from datetime import datetime
 from enum import Enum
@@ -19,7 +20,14 @@ from google import genai
 from google.genai import errors, types
 from pydantic import BaseModel, Field
 
-from .config import ALL_MODELS_LIMITED_WAIT_S, RATE_LIMIT_BACKOFF_S
+from .config import (
+    ALL_MODELS_LIMITED_WAIT_S,
+    LLM_BAND_MAX,
+    LLM_BAND_MIN,
+    LLM_RAW_MAX,
+    LLM_RAW_MIN,
+    RATE_LIMIT_BACKOFF_S,
+)
 from .config import GEMINI_MODELS as ROUTER_MODELS
 from .context_builder import is_within_quiet_hours
 
@@ -183,6 +191,8 @@ class LLMRouter:
         decision = self._call_with_fallback(prompt)
         result = decision.model_dump(mode="json")
 
+        result["confidence"] = rescale_confidence(result["confidence"])
+
         # Keep only evidence IDs that really exist in the provided context.
         valid_ids = {item["message_id"] for item in context.get("evidence", [])}
         result["evidence_message_ids"] = [
@@ -270,6 +280,28 @@ class LLMRouter:
                         continue
                     break  # retries exhausted or non-retryable; try the next model
         raise RuntimeError("All router models failed") from last_error
+
+
+def rescale_confidence(raw: float) -> float:
+    """Map a raw self-reported LLM confidence into the LLM band.
+
+    Linear rescale from [LLM_RAW_MIN, LLM_RAW_MAX] onto
+    [LLM_BAND_MIN, LLM_BAND_MAX], so the model's relative ordering survives
+    instead of every score collapsing onto the cap. Values outside the raw
+    range saturate at the band edges; the band never reaches the rule tier.
+    """
+    try:
+        raw = float(raw)
+    except (TypeError, ValueError):
+        return LLM_BAND_MIN
+    if math.isnan(raw) or math.isinf(raw):
+        return LLM_BAND_MIN
+
+    span = LLM_RAW_MAX - LLM_RAW_MIN
+    position = 0.0 if span <= 0 else (raw - LLM_RAW_MIN) / span
+    position = min(max(position, 0.0), 1.0)
+    scaled = LLM_BAND_MIN + position * (LLM_BAND_MAX - LLM_BAND_MIN)
+    return round(scaled, 2)
 
 
 def _clean(value: Any) -> Any:

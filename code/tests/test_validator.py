@@ -123,3 +123,28 @@ def test_columns_match_output_contract():
         "confidence",
         "evidence_message_ids",
     ]
+
+
+# ---- LLM confidence rescaling (replaces hard clamping) -----------------------
+
+def test_rescale_preserves_relative_ordering():
+    from src.llm_router import rescale_confidence
+    raws = [0.70, 0.80, 0.85, 0.90, 0.95, 1.00]
+    scaled = [rescale_confidence(r) for r in raws]
+    assert scaled == sorted(scaled), scaled
+    assert len(set(scaled)) > 1, "rescale must not flatten distinct raw scores"
+
+
+def test_rescale_stays_inside_the_llm_band():
+    from src.config import LLM_BAND_MAX, LLM_BAND_MIN
+    from src.llm_router import rescale_confidence
+    for raw in (-5, 0, 0.3, 0.7, 0.99, 1.0, 7, float("nan"), float("inf"), "junk", None):
+        out = rescale_confidence(raw)
+        assert LLM_BAND_MIN <= out <= LLM_BAND_MAX, (raw, out)
+
+
+def test_rescaled_llm_never_reaches_the_rule_tier():
+    from src.config import LLM_BAND_MAX, RULE_CONFIDENCE
+    from src.llm_router import rescale_confidence
+    assert rescale_confidence(1.0) == LLM_BAND_MAX
+    assert LLM_BAND_MAX <= min(RULE_CONFIDENCE.values())

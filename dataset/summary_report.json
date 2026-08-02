@@ -1,30 +1,26 @@
 {
-  "generated_at": "2026-08-02T12:33:00+05:30",
+  "generated_at": "2026-08-02T13:37:55+05:30",
   "dry_run": false,
-  "messages_processed": 110,
+  "messages_processed": 70,
   "sources": {
-    "rule": 40,
+    "rule": 0,
     "llm": 70,
     "fallback": 0
   },
   "actions": {
     "notify": 32,
-    "mute": 62,
-    "digest": 16
+    "digest": 17,
+    "mute": 21
   },
   "message_types": {
-    "payment": 1,
-    "scam": 31,
+    "business_update": 8,
     "personal": 11,
-    "forward": 10,
-    "event": 15,
-    "promotion": 16,
-    "greeting": 4,
-    "business_update": 7,
-    "urgent": 13,
-    "unknown": 2
+    "scam": 18,
+    "event": 16,
+    "promotion": 5,
+    "urgent": 12
   },
-  "elapsed_seconds": 417.5,
-  "avg_seconds_per_message": 3.8,
+  "elapsed_seconds": 527.1,
+  "avg_seconds_per_message": 7.53,
   "output_file": "D:\\EXPERIMENTS\\agent\\data\\dataset\\output.csv"
 }

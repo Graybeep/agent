@@ -94,8 +94,16 @@ All paths, thresholds, model names, and policies live in `src/config.py`.
 - Action: **97%** (29/30), message type: **87%** (26/30)
 - Confidence is banded by source and empirically calibrated: deterministic
   rules occupy 0.90 to 0.95 and scored **100% action accuracy** in every band
-  on the samples; LLM decisions are capped at 0.90 and scored 96%. No bucket
+  on the samples; LLM decisions scored 96% and sit in a lower band. No bucket
   with lower confidence outperforms a higher one on action accuracy.
+- LLM confidence is **rescaled, not clamped**. Hard-capping every model score
+  at 0.90 collapsed 69 of 70 LLM rows onto that single value, destroying the
+  model's own ranking. `rescale_confidence()` linearly maps the raw score
+  from [0.70, 1.00] into [0.75, 0.90], preserving relative ordering while
+  staying below the rule tier; `LLM_CONFIDENCE_CAP` is retained underneath as
+  a backstop. The shipped file now spans 10 distinct confidence values
+  (0.82 to 0.95); the largest single value covers 41% of LLM rows, down
+  from 99%.
 
 **Calibration caveat (small n):** the two newest rules fire on very few
 solved samples: `high_forward_chain` on 2 (both exactly correct, action and
@@ -113,11 +121,11 @@ message_id,action,message_type,reason,confidence,evidence_message_ids
 ```
 
 `evidence_message_ids` is a semicolon-separated list of real
-`message_history.csv` IDs (or `none`), verified against the dataset. 18 of
+`message_history.csv` IDs (or `none`), verified against the dataset. 17 of
 the 110 rows carry `none`; all were audited and none are silent losses:
 1 row has no retrievable match (unknown sender, no topical similarity),
 7 are rule decisions whose candidates carried no negative signal (rules cite
-only reported/dismissed/muted history by design), and 10 are LLM decisions
+only reported/dismissed/muted history by design), and 9 are LLM decisions
 where the model saw only topically unrelated candidates and correctly
 declined to cite them.
 
