@@ -10,3 +10,12 @@ __pycache__/
 
 # extraction caches (regenerable)
 code/cache/
+
+# extra ignored files
+/code.zip
+/AGENTS.md
+/CLAUDE.md
+/INTERVIEW_NOTES.md
+/problem_statement.md
+/README.md
+
