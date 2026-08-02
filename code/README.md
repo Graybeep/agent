@@ -35,7 +35,7 @@ Evaluate against the solved examples, and run the unit tests:
 
 ```bash
 python evaluation/main.py    # accuracy vs dataset/sample_messages.csv
-python -m pytest tests/      # 36 unit tests (rules, validator, retrieval)
+python -m pytest tests/      # 43 unit tests (rules, validator, retrieval, media)
 python preflight.py          # pre-package checks; run before any code.zip rebuild
 ```
 
@@ -147,6 +147,18 @@ muted marketplace groups now classify as `promotion` instead of `unknown`
 A candidate scam-versus-spam refinement was evaluated the same way and
 rejected: dry-running it against the eight production rows it would touch
 flipped one correct `scam` row, failing our no-regression criterion.
+
+**Known limitation, quota-exhaustion latch:** when the whole model chain
+fails on one message, `main.py` sets an `llm_exhausted` flag and every
+remaining LLM-bound row is written as an explicit low-confidence digest with
+a "quota exhausted" reason. The flag is deliberately one-way: it never
+re-probes, so a transient outage that clears seconds later still degrades
+the rest of the run. That trade buys guaranteed completion and no retry
+storms against an already-failing API, and the rows it produces are trivially
+identifiable and re-runnable -- drop them and rerun, and the checkpoint
+resume regenerates exactly those. A future version could re-probe after a
+backoff instead of latching. The shipped `output.csv` contains zero such
+rows.
 
 **Regeneration variance:** the confidence rescale required re-running the 70
 LLM-decided rows (the 40 rule-decided rows are deterministic and were left

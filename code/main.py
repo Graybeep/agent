@@ -182,7 +182,19 @@ def main() -> int:
                 )
 
             stage("media")
-            media_text = extractor.get_media_text(message.get("media_type"), message.get("media_id"))
+            try:
+                media_text = extractor.get_media_text(
+                    message.get("media_type"), message.get("media_id")
+                )
+            except Exception as exc:
+                # Corrupt image, unreadable audio, unsupported format, or an
+                # empty model response must not end the run: route on the
+                # message text alone and carry on.
+                progress.console.print(
+                    f"[yellow]{message_id}: media extraction failed ({exc}); "
+                    f"routing on text only[/yellow]"
+                )
+                media_text = None
 
             stage("context")
             context = builder.build_context(row, media_text)
